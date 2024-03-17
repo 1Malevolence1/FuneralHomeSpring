@@ -1,21 +1,18 @@
-package com.example.FunneralHomeNew.models.Person;
+package com.example.FunneralHomeNew.models.person;
 
 
+import com.example.FunneralHomeNew.models.passport.Passport;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.time.LocalDate;
-
 
 
 @NoArgsConstructor
 @Data
 @MappedSuperclass // Аннотация @MappedSuperclass позволяет вынести общие поля в родительский класс, но при этом не создавать для него отдельную таблицу
-
 public abstract class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "tale")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "surname")
@@ -26,5 +23,4 @@ public abstract class Person {
 
     @Column(name = "patronymic")
     private String patronymic;
-
 }

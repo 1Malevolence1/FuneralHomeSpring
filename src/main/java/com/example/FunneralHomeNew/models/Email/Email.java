@@ -1,6 +1,6 @@
 package com.example.FunneralHomeNew.models.Email;
 
-import com.example.FunneralHomeNew.models.Person.Customer;
+import com.example.FunneralHomeNew.models.person.Customer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "Email")
+@Table(name = "email")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

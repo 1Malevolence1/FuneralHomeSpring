@@ -1,4 +1,4 @@
-package com.example.FunneralHomeNew.models.Person;
+package com.example.FunneralHomeNew.models.person;
 
 
 import jakarta.persistence.Column;
@@ -6,12 +6,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name= "DeadMean")
+@Table(name= "deadMean")
 @Data
 @AllArgsConstructor
 public class DeadMean extends Person {
