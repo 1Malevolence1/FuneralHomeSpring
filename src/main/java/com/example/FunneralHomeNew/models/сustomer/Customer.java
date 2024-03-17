@@ -1,7 +1,8 @@
-package com.example.FunneralHomeNew.models.person;
+package com.example.FunneralHomeNew.models.сustomer;
 
 import com.example.FunneralHomeNew.models.Email.Email;
 import com.example.FunneralHomeNew.models.passport.Passport;
+import com.example.FunneralHomeNew.models.person.Person;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +11,7 @@ import lombok.Data;
 @Table(name = "customer")
 @Data
 @AllArgsConstructor
-public class Customer extends Person{
+public class Customer extends Person {
 
 
     @Column(name = "telephone")

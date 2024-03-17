@@ -1,4 +1,4 @@
-package com.example.FunneralHomeNew.models.person;
+package com.example.FunneralHomeNew.models.employess;
 
 import com.example.FunneralHomeNew.models.passport.Passport;
 import jakarta.persistence.*;

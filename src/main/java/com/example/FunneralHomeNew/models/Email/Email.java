@@ -1,6 +1,6 @@
 package com.example.FunneralHomeNew.models.Email;
 
-import com.example.FunneralHomeNew.models.person.Customer;
+import com.example.FunneralHomeNew.models.сustomer.Customer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

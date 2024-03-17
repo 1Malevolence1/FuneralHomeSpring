@@ -1,6 +1,7 @@
-package com.example.FunneralHomeNew.models.person;
+package com.example.FunneralHomeNew.models.deadmean;
 
 
+import com.example.FunneralHomeNew.models.person.Person;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
