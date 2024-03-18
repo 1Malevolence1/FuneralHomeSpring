@@ -2,7 +2,7 @@ package com.example.FunneralHomeNew.models.passport;
 
 
 
-import com.example.FunneralHomeNew.models.person.employess.Employees;
+import com.example.FunneralHomeNew.models.person.employess.Employee;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,5 +44,5 @@ public class Passport {
     private LocalDate dateOfIssue;
 
    @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.EAGER)
-    private Employees employees;
+    private Employee employees;
 }

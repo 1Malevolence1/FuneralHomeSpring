@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Похоронное бюро</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        .services {
+            margin-bottom: 20px;
+        }
+
+        .service {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .service-price {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .service-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .service-link:hover {
+            text-decoration: underline;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="submit"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>Похоронное бюро</h1><hr>
+<h4>Услуги похоронного бюро</h4>
+
+<div th:if="${services.isEmpty()}">
+    <p>В данный момент услуг нет</p>
+</div>
+<div class="services" th:each="service : ${services}">
+    <div class="service">
+        <p class="service-id">ID: <span th:text="${service.id}"></span></p>
+        <p class="service-title" th:text="${service.title}"></p>
+        <p class="service-price"><span th:text="${service.price}"></span> руб.</p>
+        <p><a class="service-link" th:href="@{/service/{id}(id=${service.id})}">Подробнее...</a></p>
+    </div>
+</div>
+<hr>
+<h3>Добавить новую услугу</h3>
+<div class="form-container">
+    <form action="/service/create" method="post" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Название услуги"/><br>
+        <input type="number" name="price" placeholder="Цена"/><br>
+        <input type="submit" value="Добавить услугу"/>
+    </form>
+</div>
+</body>
+</html>

@@ -11,7 +11,7 @@ import lombok.Data;
 @Table(name = "employees")
 @Data
 @AllArgsConstructor
-public class Employees {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Похоронное бюро</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        h4 {
+            margin: 10px 0;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        inputtype="submit" {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        inputtype="submit":hover {
+            background-color: #45a049;
+        }
+
+        .service-details {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-details b {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>Похоронное бюро</h1><hr>
+<div class="service-details">
+    <h4>Подробная информация об услуге</h4>
+
+    <b>Название услуги: </b><span th:text="${service.title}"></span><br>
+    <b>Цена: </b><span th:text="${service.price}"></span> рублей<br>
+    <b>ID услуги: </b><span th:text="${service.id}"></span><br>
+
+    <hr>
+    <form th:action="@{/service/delete/{id}(id=${service.id})}" method="post">
+        <input type="submit" value="Удалить услугу" style="font-size: 18px; padding: 12px 24px;"/>
+    </form>
+</div>
+</body>
+</html>
