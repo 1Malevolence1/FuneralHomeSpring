@@ -1,13 +1,13 @@
-package com.example.FunneralHomeNew.models.deadmean;
+package com.example.FunneralHomeNew.models.person.deadmean;
 
 
+import com.example.FunneralHomeNew.models.contract.Contract;
 import com.example.FunneralHomeNew.models.person.Person;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.awt.*;
 import java.time.LocalDate;
 
 @Entity
@@ -21,4 +21,8 @@ public class DeadMean extends Person {
 
     @Column(name = "dateOfDead")
     private LocalDate dateOfDead;
+
+    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private Contract contract;
+
 }

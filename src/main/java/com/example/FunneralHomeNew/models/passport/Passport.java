@@ -2,7 +2,7 @@ package com.example.FunneralHomeNew.models.passport;
 
 
 
-import com.example.FunneralHomeNew.models.employess.Employees;
+import com.example.FunneralHomeNew.models.person.employess.Employees;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

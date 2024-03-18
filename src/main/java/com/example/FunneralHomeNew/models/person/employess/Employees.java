@@ -1,5 +1,6 @@
-package com.example.FunneralHomeNew.models.employess;
+package com.example.FunneralHomeNew.models.person.employess;
 
+import com.example.FunneralHomeNew.models.contract.Contract;
 import com.example.FunneralHomeNew.models.passport.Passport;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,5 +27,8 @@ public class Employees {
 
     @Column(name =  "post")
     private String post;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Contract contract;
 
 }
