@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Customer extends Person {
 
-
     @Column(name = "telephone")
     private String telephone;
 

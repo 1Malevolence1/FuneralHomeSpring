@@ -1,13 +1,15 @@
 package com.example.FunneralHomeNew.models.contract;
 
 import com.example.FunneralHomeNew.models.person.deadmean.DeadMean;
-import com.example.FunneralHomeNew.models.person.employess.Employee;
-import com.example.FunneralHomeNew.models.service.Service;
 import com.example.FunneralHomeNew.models.person.сustomer.Customer;
+import com.example.FunneralHomeNew.models.relations.ContractEmployee;
+import com.example.FunneralHomeNew.models.relations.ContractService;
+import com.example.FunneralHomeNew.models.relations.Employs;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "contract")
     private Customer customer;
@@ -39,33 +41,26 @@ public class Contract {
     @Column(name = "totalAmountForServices")
     private Double totalAmountForServices;
 
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "contract")
-    private List<Employee> employeesList = new ArrayList<>();
-
-    @OneToMany(cascade= CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "contract")
-    private List<Service> servicesList = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "contract")
+    private List<ContractEmployee> contractEmployee;
 
 
-
-    @PrePersist
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "contract")
+    private List<ContractService> contractService;
+    @PostLoad // доабвит дату после загрузки всего объекта
     public void init(){
         dateConclusionContract = LocalDate.now();
     }
 
-    public void addEmployees(Employee employees) {
-        employeesList = crateList(employeesList, employees);
+
+    public void addEmploys(List<Employs> list, Employs employs){
+        crateList(list, employs);
     }
 
-    public void addService(Service services){
-       servicesList = crateList(servicesList, services);
-    }
-
-
-    private <T> List<T> crateList(List<T> list, T object) {
+    private <T> void crateList(List<T> list, T object) {
         if (list == null) {
             list = new ArrayList<>();
         }
         list.add(object);
-        return list;
     }
 }

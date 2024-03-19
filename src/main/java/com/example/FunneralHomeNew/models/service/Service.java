@@ -1,11 +1,14 @@
 package com.example.FunneralHomeNew.models.service;
 
 
-import com.example.FunneralHomeNew.models.contract.Contract;
+
+import com.example.FunneralHomeNew.models.relations.ContractService;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "services")
@@ -22,6 +25,6 @@ public class Service {
     @Column(name = "price")
     private Integer price;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-    private Contract contract;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "service")
+    private List<ContractService> contractServices;
 }
