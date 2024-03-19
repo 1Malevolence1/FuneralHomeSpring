@@ -27,4 +27,5 @@ public class Service {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "service")
     private List<ContractService> contractServices;
+
 }

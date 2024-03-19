@@ -6,6 +6,7 @@ import com.example.FunneralHomeNew.models.person.Person;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 @Table(name= "deadMean")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class DeadMean extends Person {
 
     @Column(name = "dateOfBirthday")

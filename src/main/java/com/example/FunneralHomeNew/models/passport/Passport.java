@@ -45,4 +45,6 @@ public class Passport {
 
    @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.EAGER)
     private Employee employees;
+
+
 }
