@@ -2,7 +2,6 @@ package com.example.FunneralHomeNew.controler;
 
 
 import com.example.FunneralHomeNew.models.service.Service;
-import com.example.FunneralHomeNew.service.ContractServiceSS;
 import com.example.FunneralHomeNew.service.ServiceService;
 
 import lombok.RequiredArgsConstructor;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.view.RedirectView;
 
 
 @Controller
