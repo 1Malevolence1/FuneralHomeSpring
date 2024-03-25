@@ -2,7 +2,7 @@ package com.example.FunneralHomeNew.models.person.employess;
 
 
 import com.example.FunneralHomeNew.models.passport.Passport;
-import com.example.FunneralHomeNew.models.relations.ContractEmployee;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,10 +27,8 @@ public class Employee {
     @Column(name =  "post")
     private String post;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "employees")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "passport_id")
     private Passport passport;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "employee")
-    private List<ContractEmployee> contractEmployee;
 
 }

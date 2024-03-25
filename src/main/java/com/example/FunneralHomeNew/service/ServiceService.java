@@ -5,6 +5,7 @@ import com.example.FunneralHomeNew.repository.ServiceRepository;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
@@ -19,8 +20,7 @@ public class ServiceService {
         Service serviceFromDb = serviceRepository.save(service);
 
     }
-
-
+    @Cacheable("services")
     public List<Service> getServicesList( ) {
           return serviceRepository.findAll();
     }

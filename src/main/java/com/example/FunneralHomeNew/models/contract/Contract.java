@@ -2,9 +2,8 @@ package com.example.FunneralHomeNew.models.contract;
 
 import com.example.FunneralHomeNew.models.person.deadmean.DeadMean;
 import com.example.FunneralHomeNew.models.person.сustomer.Customer;
-import com.example.FunneralHomeNew.models.relations.ContractEmployee;
-import com.example.FunneralHomeNew.models.relations.ContractService;
 import com.example.FunneralHomeNew.models.relations.Employs;
+import com.example.FunneralHomeNew.models.service.Service;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +24,7 @@ public class Contract {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "contract_id")
     private Long id;
 
     @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "contract")
@@ -41,12 +40,15 @@ public class Contract {
     @Column(name = "totalAmountForServices")
     private Double totalAmountForServices;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "contract")
-    private List<ContractEmployee> contractEmployee;
+    @OneToMany
+    @JoinColumn(name = "id")
+    private List<Customer> listCostumer;
 
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "contract")
-    private List<ContractService> contractService;
+    @ManyToMany
+    @JoinTable(name = "contract_services",
+            joinColumns = @JoinColumn(name = "contract_id"),
+            inverseJoinColumns = @JoinColumn(name = "service_id"))
+    private List<Service> listService;
     @PostLoad // доабвит дату после загрузки всего объекта
     public void init(){
         dateConclusionContract = LocalDate.now();

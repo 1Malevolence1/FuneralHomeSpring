@@ -1,3 +1,4 @@
+/*
 package com.example.FunneralHomeNew.models.relations;
 
 import com.example.FunneralHomeNew.models.contract.Contract;
@@ -25,6 +26,7 @@ public class ContractEmployee  {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Employee employee;
 }
+*/
 
 
 
