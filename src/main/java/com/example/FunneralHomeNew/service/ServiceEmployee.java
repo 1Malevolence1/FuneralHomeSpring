@@ -1,5 +1,7 @@
 package com.example.FunneralHomeNew.service;
 
+import com.example.FunneralHomeNew.Validator.employee.ValidatorEmployee;
+import com.example.FunneralHomeNew.exception.ExceptionValidator;
 import com.example.FunneralHomeNew.models.passport.Passport;
 import com.example.FunneralHomeNew.models.person.employess.Employee;
 import com.example.FunneralHomeNew.repository.EmployeeRepository;
@@ -25,9 +27,14 @@ public class ServiceEmployee implements DataManagementInterface<Employee> {
     }
 
     @Override
-    public void add(Employee employee) {
-        log.info("добавили сотрудника {}", employee);
-        employeeRepository.save(employee);
+    public void add(Employee employee) throws ExceptionValidator {
+        ValidatorEmployee validatorEmployee = new ValidatorEmployee();
+        if(validatorEmployee.check(employee) !=  null) {
+            employeeRepository.save(validatorEmployee.check(employee));
+            log.info("добавили сотрудника {}", employee);
+        }
+        else log.info("Не удалось добавить сотрудника: {}", employee);
+
     }
 
 

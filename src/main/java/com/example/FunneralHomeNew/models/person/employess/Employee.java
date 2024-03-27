@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name = "employees")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
 
     @Id

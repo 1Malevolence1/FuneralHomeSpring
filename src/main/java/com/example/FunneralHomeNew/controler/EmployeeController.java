@@ -1,5 +1,6 @@
 package com.example.FunneralHomeNew.controler;
 
+import com.example.FunneralHomeNew.exception.ExceptionValidator;
 import com.example.FunneralHomeNew.models.passport.Passport;
 import com.example.FunneralHomeNew.models.person.employess.Employee;
 import com.example.FunneralHomeNew.repository.PassportRepository;
@@ -33,8 +34,8 @@ public class EmployeeController {
         return "employee/employee-info";
     }
     @PostMapping("/create")
-    public String createEmployee(Employee employee, Passport passport, Model model)
-    {serviceEmployee.add(employee);
+    public String createEmployee(Employee employee, Passport passport, Model model) throws ExceptionValidator {
+        serviceEmployee.add(employee);
         return employee(model);
     }
 
