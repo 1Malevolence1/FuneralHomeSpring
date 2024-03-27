@@ -43,6 +43,8 @@ public class Passport {
     @Column(name = "dateOfIssue")
     private LocalDate dateOfIssue;
 
-   @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.EAGER)
+   @OneToOne(mappedBy = "passport", cascade = CascadeType.ALL)
     private Employee employees;
+
+
 }

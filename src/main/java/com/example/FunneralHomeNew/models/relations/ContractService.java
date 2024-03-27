@@ -1,3 +1,4 @@
+/*
 package com.example.FunneralHomeNew.models.relations;
 
 import com.example.FunneralHomeNew.models.contract.Contract;
@@ -14,15 +15,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ContractService   {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH , fetch = FetchType.EAGER)
     private Contract contract;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REFRESH , fetch = FetchType.EAGER)
     private Service service;
+
+
+
+
 }
+*/
