@@ -1,10 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Похоронное бюро</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        .services {
+            margin-bottom: 20px;
+        }
+
+        .service {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .service-price {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .service-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .service-link:hover {
+            text-decoration: underline;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="submit"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container input[type="date"] {
+    width: 200px;
+    height: 30px;
+}
+    </style>
 </head>
 <body>
+<h1>Похоронное бюро</h1><hr>
+<h4>Сотрудники похоронного бюро</h4>
 
+<div th:if="${employees.isEmpty()}">
+    <p>В данный момент сотрудников нет</p>
+</div>
+<div class="employees" th:each="employee : ${employees}">
+    <div class="employee">
+        <div>
+            <div th:text="${employee.passport.surname}"></div>
+            <div th:text="${employee.passport.name}"></div>
+            <div th:text="${employee.passport.patronymic}"></div>
+        </div>
+        <p><a class="employee-link" th:href="@{/employee/{id}(id=${employee.id})}">Подробнее...</a></p>
+    </div>
+</div>
+<hr>
+
+
+<h3>Добавить сотрудника</h3>
+<div class="form-container">
+    <form action="/employee/create" method="post" enctype="multipart/form-data">
+        <input type="text" name="passport.surname" placeholder="Фамилия "/><br>
+        <input type="text" name="passport.name" placeholder="Имя"/><br>
+        <input type="text" name="passport.patronymic" placeholder="Отчество"/><br>
+        <input type="text" name="passport.series" placeholder="Серия паспорта"/><br>
+        <input type="text" name="passport.number" placeholder="Номер паспорта"/><br>
+        <input type="text" name="passport.placeOfIssue" placeholder="Место выдачи паспорта"/><br>
+        <input type="date" name="passport.dateOfIssue" placeholder="Дата выдачи паспорта"/><br>
+        <input type="text" name="telephone" placeholder="Телефон"/><br>
+        <input type="text" name="post" placeholder="Должность"/><br>
+        <input type="submit" value="Добавить сотрудника"/>
+    </form>
+</div>
 </body>
 </html>

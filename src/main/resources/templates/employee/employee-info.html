@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Похоронное бюро</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        h4 {
+            margin: 10px 0;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        inputtype="submit" {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        inputtype="submit":hover {
+            background-color: #45a049;
+        }
+
+        .service-details {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-details b {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>Похоронное бюро</h1><hr>
+<div class="employee-details">
+
+    <h4>Подробная информация об Сотруднике</h4>
+    <b>Id сотрудника: </b><span th:text="${employee.id}"></span><br>
+    <b>Фамилия: </b><span th:text="${employee.passport.surname}"></span><br>
+    <b>Имя: </b><span th:text="${employee.passport.name}"></span><br>
+    <b>Отчество: </b><span th:text="${employee.passport.patronymic}"></span><br>
+    <b>Серия паспорта: </b><span th:text="${employee.passport.series}"></span><br>
+    <b>Номер паспорта: </b><span th:text="${employee.passport.number}"></span><br>
+    <b>Место выдачи паспорта: </b><span th:text="${employee.passport.placeOfIssue}"></span><br>
+    <b>Дата выдачи паспорта: </b><span th:text="${employee.passport.dateOfIssue}"></span><br>
+    <b>Номер телефонаа: </b><span th:text="${employee.telephone}"></span><br>
+    <b>Должность: </b><span th:text="${employee.post}"></span><br>
+
+
+    <hr>
+    <form th:action="@{/employee/delete/{id}(id=${employee.id})}" method="post">
+        <input type="submit" value="Удалить сотрудника" style="font-size: 18px; padding: 12px 24px;"/>
+    </form>
+</div>
+</body>
+</html>

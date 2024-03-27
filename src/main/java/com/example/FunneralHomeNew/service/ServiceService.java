@@ -1,26 +1,31 @@
 package com.example.FunneralHomeNew.service;
 
 
+import com.example.FunneralHomeNew.models.passport.Passport;
 import com.example.FunneralHomeNew.models.service.Service;
 import com.example.FunneralHomeNew.repository.ServicesRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
-@Component
+
+
 @org.springframework.stereotype.Service
 @Slf4j
 @RequiredArgsConstructor
 public class ServiceService implements DataManagementInterface<Service> {
 
+
     private final ServicesRepository serviceRepository;
+
 
 
     @Override
     public void add(Service service) {
         log.info("save product {}", service);
-       Service serviceFromDb = serviceRepository.save(service);
+        serviceRepository.save(service);
     }
 
     @Override

@@ -30,5 +30,4 @@ public class Employee {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "passport_id")
     private Passport passport;
-
 }

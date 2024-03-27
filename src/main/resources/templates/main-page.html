@@ -2,11 +2,94 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Главная страница</title>
+    <title>Похоронное бюро</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        .services {
+            margin-bottom: 20px;
+        }
+
+        .service {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .service-price {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .service-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .service-link:hover {
+            text-decoration: underline;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="submit"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+<h1>Похоронное бюро</h1><hr>
 <a href="/service">
-    <button>Перейти на страницу услуг</button>
+    <button style="background-color: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 5px;">Перейти на страницу услуг</button>
+</a>
+<a href="/employee">
+    <button style="background-color: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 5px;">Добавить сотрудника</button>
 </a>
 </body>
 </html>
+
