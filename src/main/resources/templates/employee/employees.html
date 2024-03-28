@@ -121,5 +121,14 @@
         <input type="submit" value="Добавить сотрудника"/>
     </form>
 </div>
+
+
+
+<div th:if="${employeeCreated}">
+    <p>Сотрудник успешно создан!</p>
+</div>
+<div th:unless="${employeeCreated}">
+    <p>Не удалось создать сотрудника.</p>
+</div>
 </body>
 </html>

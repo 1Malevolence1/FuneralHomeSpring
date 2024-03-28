@@ -26,6 +26,7 @@ public class ServiceService implements DataManagementInterface<Service> {
     public void add(Service service) {
         log.info("save product {}", service);
         serviceRepository.save(service);
+
     }
 
     @Override
