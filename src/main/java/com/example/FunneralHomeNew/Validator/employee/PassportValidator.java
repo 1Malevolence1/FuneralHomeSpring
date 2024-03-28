@@ -37,8 +37,7 @@ public class PassportValidator implements Validator<Passport> {
 
     private boolean checkFIO(Passport passport) throws ExceptionValidator {
         FIOValidator fioValidator = new FIOValidator();
-        return fioValidator.checkName(passport.getName()) && fioValidator.checkSurname(passport.getSurname()) &&
-                fioValidator.checkPatronymic(passport.getPatronymic());
+        return fioValidator.checkFIO(passport.getName(), passport.getSurname(), passport.getPatronymic());
     }
 
     private boolean validator(String value, int length, String errorMassage) throws ExceptionValidator {

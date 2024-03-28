@@ -2,15 +2,14 @@ package com.example.FunneralHomeNew.Validator.employee;
 
 import com.example.FunneralHomeNew.Validator.Validator;
 import com.example.FunneralHomeNew.exception.ExceptionValidator;
+import com.example.FunneralHomeNew.models.passport.Passport;
 import com.example.FunneralHomeNew.models.person.employess.Employee;
 
 public class ValidatorEmployee implements Validator<Employee> {
     @Override
     public Employee check(Employee employee) throws ExceptionValidator {
         try {
-            PassportValidator passportValidator = new PassportValidator();
-
-            if (passportValidator.check(employee.getPassport()) != null && post(employee.getPost())
+            if (validatorPassport(employee.getPassport()) != null && post(employee.getPost())
             && telephone(employee.getTelephone())) {
                 return employee;
             } else {
@@ -41,5 +40,10 @@ public class ValidatorEmployee implements Validator<Employee> {
             System.out.println(e.getErrorMessage());
         }
         return false;
+    }
+
+    private Passport validatorPassport(Passport passport) throws ExceptionValidator {
+        PassportValidator passportValidator = new PassportValidator();
+        return passportValidator.check(passport);
     }
 }

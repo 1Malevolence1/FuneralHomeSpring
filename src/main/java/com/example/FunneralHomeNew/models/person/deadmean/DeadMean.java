@@ -14,7 +14,6 @@ import java.time.LocalDate;
 @Entity
 @Table(name= "deadMean")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class DeadMean extends Person {
 
@@ -27,4 +26,8 @@ public class DeadMean extends Person {
     @OneToOne(mappedBy = "deadMean", cascade = CascadeType.ALL)
     private Contract contract;
 
+
+    public DeadMean(Long id, String surname, String name, String patronymic) {
+        super(id, surname, name, patronymic);
+    }
 }

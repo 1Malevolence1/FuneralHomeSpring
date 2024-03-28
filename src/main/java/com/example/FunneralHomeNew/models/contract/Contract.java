@@ -43,7 +43,7 @@ public class Contract {
     @Column(name = "totalAmountForServices")
     private Double totalAmountForServices;
 
-    @OneToMany
+    @ManyToMany
     @JoinTable(name = "contract_employee",
             joinColumns = @JoinColumn(name = "contract_id"),
             inverseJoinColumns = @JoinColumn(name = "employee_id"))
