@@ -1,5 +1,6 @@
 package com.example.FunneralHomeNew.controler;
 
+import com.example.FunneralHomeNew.Validator.Validator;
 import com.example.FunneralHomeNew.Validator.employee.ValidatorEmployee;
 import com.example.FunneralHomeNew.config.colors.Colors;
 import com.example.FunneralHomeNew.exception.ExceptionValidator;
