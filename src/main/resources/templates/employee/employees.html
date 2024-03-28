@@ -96,9 +96,7 @@
 <div class="employees" th:each="employee : ${employees}">
     <div class="employee">
         <div>
-            <div th:text="${employee.passport.surname}"></div>
-            <div th:text="${employee.passport.name}"></div>
-            <div th:text="${employee.passport.patronymic}"></div>
+            <div th:text="|${employee.passport.surname} ${employee.passport.name} ${employee.passport.patronymic}|"></div>
         </div>
         <p><a class="employee-link" th:href="@{/employee/{id}(id=${employee.id})}">Подробнее...</a></p>
     </div>
