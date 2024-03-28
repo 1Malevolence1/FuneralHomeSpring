@@ -4,6 +4,8 @@ import com.example.FunneralHomeNew.Validator.Validator;
 import com.example.FunneralHomeNew.exception.ExceptionValidator;
 import com.example.FunneralHomeNew.models.passport.Passport;
 
+import java.time.LocalDate;
+
 
 public class PassportValidator implements Validator<Passport> {
     @Override
@@ -15,6 +17,11 @@ public class PassportValidator implements Validator<Passport> {
 
         return null;
     }
+
+  /*  private boolean dateOfIssue(LocalDate localDate) throws ExceptionValidator {
+        if(localDate != null) return true;
+        else throw new ExceptionValidator("Ошибка: Место выдачи паспорта");
+    }*/
 
     private boolean placeOfIssue(String placeOfIssue) throws ExceptionValidator {
         return validator(placeOfIssue, "место выдачи паспорта");

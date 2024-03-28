@@ -28,14 +28,9 @@ public class ServiceEmployee implements DataManagementInterface<Employee> {
 
     @Override
     public void add(Employee employee) throws ExceptionValidator {
-        ValidatorEmployee validatorEmployee = new ValidatorEmployee();
-        if(validatorEmployee.check(employee) !=  null) {
-            employeeRepository.save(validatorEmployee.check(employee));
+            employeeRepository.save(employee);
             log.info("добавили сотрудника {}", employee);
         }
-        else log.info("Не удалось добавить сотрудника: {}", employee);
-
-    }
 
 
     @Override
@@ -46,6 +41,7 @@ public class ServiceEmployee implements DataManagementInterface<Employee> {
     @Override
     public void deleted(Long id) {
            employeeRepository.deleteById(id);
+           log.info("Удалили сотрудника из базы данных с id: {}", id);
     }
 
     @Override
