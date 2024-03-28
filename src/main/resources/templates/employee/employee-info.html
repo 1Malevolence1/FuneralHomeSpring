@@ -30,7 +30,7 @@
             margin-top: 20px;
         }
 
-        inputtype="submit" {
+        input[type="submit"] {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
@@ -39,19 +39,20 @@
             font-size: 16px;
         }
 
-        inputtype="submit":hover {
+        input[type="submit"]:hover {
             background-color: #45a049;
         }
 
-        .service-details {
+        .employee-details {
             margin: 20px;
             padding: 20px;
             background-color: white;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 30px;
         }
 
-        .service-details b {
+        .employee-details b {
             font-weight: bold;
         }
     </style>
@@ -69,7 +70,7 @@
     <b>Номер паспорта: </b><span th:text="${employee.passport.number}"></span><br>
     <b>Место выдачи паспорта: </b><span th:text="${employee.passport.placeOfIssue}"></span><br>
     <b>Дата выдачи паспорта: </b><span th:text="${employee.passport.dateOfIssue}"></span><br>
-    <b>Номер телефонаа: </b><span th:text="${employee.telephone}"></span><br>
+    <b>Номер телефона: </b><span th:text="${employee.telephone}"></span><br>
     <b>Должность: </b><span th:text="${employee.post}"></span><br>
 
 
@@ -77,9 +78,11 @@
     <form th:action="@{/employee/delete/{id}(id=${employee.id})}" method="post">
         <input type="submit" value="Удалить сотрудника" style="font-size: 18px; padding: 12px 24px;"/>
     </form>
+
+    <a href="/employee">
+        <button style="background-color: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 5px;">Назад</button>
+    </a>
 </div>
-
-
 
 </body>
 </html>
