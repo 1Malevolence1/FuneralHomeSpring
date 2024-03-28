@@ -18,9 +18,10 @@ public class Customer extends Person {
     @Column(name = "telephone")
     private String telephone;
 
-    @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.EAGER, mappedBy = "customer")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "email_id")
     private Email email;
 
-    @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Contract contract;
 }

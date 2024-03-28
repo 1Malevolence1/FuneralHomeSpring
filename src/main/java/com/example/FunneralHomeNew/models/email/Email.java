@@ -28,6 +28,6 @@ public class Email {
     @Column(name = "extension")
     private String extension; // ".ru"
 
-    @OneToOne(cascade = CascadeType.REFRESH,  fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.REFRESH, mappedBy = "email")
     private Customer customer;
 }

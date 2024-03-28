@@ -1,6 +1,7 @@
 package com.example.FunneralHomeNew.models.contract;
 
 import com.example.FunneralHomeNew.models.person.deadmean.DeadMean;
+import com.example.FunneralHomeNew.models.person.employess.Employee;
 import com.example.FunneralHomeNew.models.person.сustomer.Customer;
 import com.example.FunneralHomeNew.models.relations.Employs;
 import com.example.FunneralHomeNew.models.service.Service;
@@ -27,10 +28,12 @@ public class Contract {
     @Column(name = "contract_id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "contract")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "contract")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "deadMean_id")
     private DeadMean deadMean;
 
     @Column(name = "dateConclusionContract")
@@ -41,14 +44,21 @@ public class Contract {
     private Double totalAmountForServices;
 
     @OneToMany
-    @JoinColumn(name = "id")
-    private List<Customer> listCostumer;
+    @JoinTable(name = "contract_employee",
+            joinColumns = @JoinColumn(name = "contract_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id"))
+    private List<Employee> listEmployee;
 
     @ManyToMany
     @JoinTable(name = "contract_services",
             joinColumns = @JoinColumn(name = "contract_id"),
             inverseJoinColumns = @JoinColumn(name = "service_id"))
     private List<Service> listService;
+
+
+
+
+
     @PostLoad // доабвит дату после загрузки всего объекта
     public void init(){
         dateConclusionContract = LocalDate.now();

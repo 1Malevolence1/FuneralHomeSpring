@@ -24,7 +24,7 @@ public class DeadMean extends Person {
     @Column(name = "dateOfDead")
     private LocalDate dateOfDead;
 
-    @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "deadMean", cascade = CascadeType.ALL)
     private Contract contract;
 
 }
