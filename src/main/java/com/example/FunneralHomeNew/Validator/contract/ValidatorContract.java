@@ -4,17 +4,19 @@ import com.example.FunneralHomeNew.Validator.Validator;
 import com.example.FunneralHomeNew.exception.ExceptionValidator;
 import com.example.FunneralHomeNew.models.contract.Contract;
 import com.example.FunneralHomeNew.models.person.deadmean.DeadMean;
-import lombok.NonNull;
-
-import java.util.Random;
+import com.example.FunneralHomeNew.models.person.сustomer.Customer;
 
 public class ValidatorContract implements Validator<Contract> {
     @Override
     public Contract check(Contract contract) throws ExceptionValidator {
         validatorDeadMean(contract.getDeadMean());
-        // проверка данных метрвеца
+        validatorCustomer(contract.getCustomer());
         // проверка данных закачика
         return contract;
+    }
+
+    private void validatorCustomer(Customer customer) {
+        ValidatorCustomer validator = new ValidatorCustomer();
     }
 
     private boolean validatorDeadMean(DeadMean deadMean) throws ExceptionValidator {

@@ -6,11 +6,13 @@ import com.example.FunneralHomeNew.models.person.Person;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
 import java.time.LocalDate;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name= "deadMean")
 @Data
@@ -26,8 +28,4 @@ public class DeadMean extends Person {
     @OneToOne(mappedBy = "deadMean", cascade = CascadeType.ALL)
     private Contract contract;
 
-
-    public DeadMean(Long id, String surname, String name, String patronymic) {
-        super(id, surname, name, patronymic);
-    }
 }
