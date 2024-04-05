@@ -2,6 +2,7 @@ package com.example.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
@@ -16,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class WebSecurityConfig {
 
     // авторизация
@@ -35,7 +37,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/main-page/**").permitAll().anyRequest().authenticated())
-                .formLogin(fromLogin -> fromLogin.loginPage("/login").permitAll().defaultSuccessUrl("/", true)).
+                .formLogin(fromLogin -> fromLogin.loginPage("/login").permitAll().defaultSuccessUrl("/main/main-page", true)).
                 logout(LogoutConfigurer::permitAll).build();
 
     }
