@@ -2,12 +2,14 @@ package com.example.FunneralHomeNew.controler;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MainPage {
+@RequestMapping("/main")
+public class MainPageController {
 
-    @GetMapping("/")
+    @GetMapping("/main-page")
     public String mainPage(){
-        return "main-page";
+        return "main/main-page";
     }
 }

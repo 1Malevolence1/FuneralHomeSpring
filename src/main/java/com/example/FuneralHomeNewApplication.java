@@ -1,11 +1,6 @@
-package com.example.FunneralHomeNew;
+package com.example;
 
 
-import com.example.FunneralHomeNew.models.person.employess.Employee;
-
-import com.example.FunneralHomeNew.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
