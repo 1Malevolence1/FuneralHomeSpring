@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ManController {
 
 
-    @GetMapping
+    @GetMapping("/")
     public String mainPage(){
         return "main-page";
     }
