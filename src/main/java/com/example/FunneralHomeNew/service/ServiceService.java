@@ -9,17 +9,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @org.springframework.stereotype.Service
 @Slf4j
 @RequiredArgsConstructor
-public class ServiceService implements DataManagementInterface<Service> {
+public class ServiceService implements DataManagementInterface<Service>, SplitArray {
 
 
     private final ServicesRepository serviceRepository;
-
 
 
     @Override
@@ -42,5 +42,20 @@ public class ServiceService implements DataManagementInterface<Service> {
     @Override
     public Service getObject(Long id) {
         return serviceRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Long> splitArray(String massive) {
+
+        String[] array = massive.split(",");
+
+        List<Long> listId = new ArrayList<>();
+
+        for (String item : array
+        ) {
+            listId.add(Long.parseLong(item));
+        }
+
+        return listId;
     }
 }

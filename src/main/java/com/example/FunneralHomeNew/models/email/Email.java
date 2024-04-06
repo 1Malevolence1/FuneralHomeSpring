@@ -1,3 +1,4 @@
+/*
 package com.example.FunneralHomeNew.models.email;
 
 import com.example.FunneralHomeNew.models.person.сustomer.Customer;
@@ -31,3 +32,4 @@ public class Email {
     @OneToOne(cascade = CascadeType.REFRESH, mappedBy = "email")
     private Customer customer;
 }
+*/

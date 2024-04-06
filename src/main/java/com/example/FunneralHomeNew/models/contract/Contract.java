@@ -63,16 +63,19 @@ public class Contract {
     public void init(){
         dateConclusionContract = LocalDate.now();
     }
-
-
-    public void addEmploys(List<Employs> list, Employs employs){
-        crateList(list, employs);
+    public void addService(Service service){
+       if(listService == null){
+           listService = new ArrayList<>();
+       }
+       listService.add(service);
     }
 
-    private <T> void crateList(List<T> list, T object) {
-        if (list == null) {
-            list = new ArrayList<>();
+
+    public void addEmploys(Employee employs){
+        if(listEmployee == null){
+            listEmployee = new ArrayList<>();
         }
-        list.add(object);
+        listEmployee.add(employs);
     }
+
 }

@@ -1,3 +1,4 @@
+/*
 package com.example.FunneralHomeNew.Validator.contract;
 
 import com.example.FunneralHomeNew.models.email.Email;
@@ -27,3 +28,4 @@ public class MengerEmail {
         return email;
     }
 }
+*/

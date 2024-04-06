@@ -7,10 +7,7 @@ import com.example.FunneralHomeNew.service.ContractService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +38,12 @@ public class ContractController {
 
     // Должен будет сохранять конракт
     @PostMapping("/create")
-    public String createProduct(Contract contract, Model model) throws ExceptionValidator {
+    public String createContract(Contract contract, Model model, @RequestParam("massiveService") String mService,
+                                 @RequestParam("massiveEmployees") String mEmployee) throws ExceptionValidator {
+        contractService.addServiceToTheContract(contract, mService);
+        contract.setTotalAmountForServices(contractService.totalAmountForServices(contract.getListService()));
+
+        contractService.addSEmployeeToTheContract(contract, mEmployee);
         contractService.add(contract);
         return contract(model);
     }

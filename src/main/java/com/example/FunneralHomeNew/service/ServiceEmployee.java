@@ -6,12 +6,13 @@ import com.example.FunneralHomeNew.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 @org.springframework.stereotype.Service
 @RequiredArgsConstructor
-public class ServiceEmployee implements DataManagementInterface<Employee> {
+public class ServiceEmployee implements DataManagementInterface<Employee>, SplitArray {
 
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(ServiceEmployee.class);
     private final EmployeeRepository employeeRepository;
@@ -41,5 +42,19 @@ public class ServiceEmployee implements DataManagementInterface<Employee> {
     }
 
 
-}
+    @Override
+    public List<Long> splitArray(String massive) {
+
+            String[] array = massive.split(",");
+
+            List<Long> listId = new ArrayList<>();
+
+            for (String item : array
+            ) {
+                listId.add(Long.parseLong(item));
+            }
+
+            return listId;
+        }
+    }
 

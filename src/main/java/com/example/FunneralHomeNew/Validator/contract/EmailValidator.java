@@ -1,7 +1,8 @@
+/*
 package com.example.FunneralHomeNew.Validator.contract;
 
 import com.example.FunneralHomeNew.exception.ExceptionValidator;
-import com.example.FunneralHomeNew.models.email.Email;
+// import com.example.FunneralHomeNew.models.email.Email;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,3 +71,4 @@ public class EmailValidator {
         return domain;
     }
 }
+*/
