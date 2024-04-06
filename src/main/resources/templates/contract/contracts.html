@@ -96,7 +96,7 @@
 <div class="contracts" th:each="contract : ${contracts}">
     <div class="contract">
         <div>
-            <div th:text="|${contract.id}"></div>
+            <div th:text="${contract.id}"></div>
         </div>
         <p><a class="contract-link" th:href="@{/contract/{id}(id=${contract.id})}">Подробнее...</a></p>
     </div>

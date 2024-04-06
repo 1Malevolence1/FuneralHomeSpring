@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Похоронное бюро</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        h4 {
+            margin: 10px 0;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .employee-details {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 30px;
+        }
+
+        .employee-details b {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>Похоронное бюро</h1><hr>
+<div class="contract-details">
+
+    <h4>Подробная информация об Конратке</h4>
+    <b>Id контркта: </b><span th:text="${contract.id}"></span><br>
+
+    <fieldset>
+        <legend>Данноые покойника</legend>
+        <b>Фамилия: </b><span th:text="${contract.deadMean.surname}"></span><br>
+        <b>Имя: </b><span th:text="${contract.deadMean.name}"></span><br>
+        <b>Отчество: </b><span th:text="${contract.deadMean.patronymic}"></span><br>
+        <b>Дата рождения: </b><span th:text="${contract.deadMean.dateOfBirthday}"></span><br>
+        <b>Дата сметри: </b><span th:text="${contract.deadMean.dateOfDead}"></span><br>
+    </fieldset>
+
+
+    <FIELDSET>
+
+        <legend>Данные клиента</legend>
+        <b>Фамилия: </b><span th:text="${contract.customer.surname}"></span><br>
+        <b>Имя: </b><span th:text="${contract.customer.name}"></span><br>
+        <b>Отчество: </b><span th:text="${contract.customer.patronymic}"></span><br>
+        <b>Отчество: </b><span th:text="${contract.customer.telephone}"></span><br>
+
+    </FIELDSET>
+
+
+    <fieldset>
+
+    <LEGEND> Инфомрация об услугах</LEGEND>
+    <b>Общая стоимость услг: </b><span th:text="${contract.totalAmountForServices}"></span><br>
+    <b>Услуги: </b><span th:text="${contract.totalAmountForServices}"></span><br>
+    <div class="services" th:each="service : ${services}">
+        <div class="service">
+            <span class="service-title" th:text="${service.title}"></span>
+            <a class="service-link" th:href="@{/service/{id}(id=${service.id})}">Подробнее...</a>
+        </div>
+    </div>
+
+        </fieldset>
+
+
+
+
+
+<FIELDSET>
+
+    <LEGEND> Инфомрация об  сотрудниках</LEGEND>
+    <b>Сотрудники: </b>
+    <div class="employee" th:each="employee : ${employees}">
+        <div class="employee">
+            <span th:text="|${employee.passport.surname} ${employee.passport.name} ${employee.passport.patronymic}|"></span>
+            <a class="employee-link" th:href="@{/employee/{id}(id=${employee.id})}">Подробнее...</a>
+        </div>
+        </div>
+
+
+</FIELDSET>
+
+
+    <hr>
+    <form th:action="@{/contract/delete/{id}(id=${contract.id})}" method="post">
+        <input type="submit" value="Удалить контракт" style="font-size: 18px; padding: 12px 24px;"/>
+    </form>
+
+    <a href="/contract">
+        <button style="background-color: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 5px;">Назад</button>
+    </a>
+</div>
+
+</body>
+</html>

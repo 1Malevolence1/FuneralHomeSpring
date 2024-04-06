@@ -29,11 +29,14 @@ public class ContractController {
 
 
     // Должен вернуть объект конракта со всеми его данными
-   /* @GetMapping("/{id}")
+    @GetMapping("/{id}")
     public String contractInfo(@PathVariable Long id, Model model) {
-        model.addAttribute("service", null);
-        return "service/service-info";
-    }*/
+        Contract contract = contractService.getObject(id);
+        model.addAttribute("contract", contract);
+        model.addAttribute("services", contract.getListService());
+        model.addAttribute("employees", contract.getListEmployee());
+        return "contract/contract-info";
+    }
 
 
     // Должен будет сохранять конракт
@@ -45,6 +48,7 @@ public class ContractController {
 
         contractService.addSEmployeeToTheContract(contract, mEmployee);
         contractService.add(contract);
+
         return contract(model);
     }
 

@@ -21,6 +21,7 @@ public class ContractService implements DataManagementInterface<Contract> {
    private final ServiceEmployee serviceEmployee;
 
 
+
    @Override
    public void add(Contract contract) throws ExceptionValidator {
          contract.setTotalAmountForServices(totalAmountForServices(contract.getListService()));
@@ -67,5 +68,5 @@ public class ContractService implements DataManagementInterface<Contract> {
          contract.addEmploys(serviceEmployee.getObject(item));
       }
    }
-   }
+}
 

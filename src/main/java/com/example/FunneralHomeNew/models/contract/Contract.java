@@ -3,7 +3,7 @@ package com.example.FunneralHomeNew.models.contract;
 import com.example.FunneralHomeNew.models.person.deadmean.DeadMean;
 import com.example.FunneralHomeNew.models.person.employess.Employee;
 import com.example.FunneralHomeNew.models.person.сustomer.Customer;
-import com.example.FunneralHomeNew.models.relations.Employs;
+
 import com.example.FunneralHomeNew.models.service.Service;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
