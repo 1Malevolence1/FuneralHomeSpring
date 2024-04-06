@@ -43,10 +43,8 @@ public class ContractController {
     @PostMapping("/create")
     public String createContract(Contract contract, Model model, @RequestParam("massiveService") String mService,
                                  @RequestParam("massiveEmployees") String mEmployee) throws ExceptionValidator {
-        contractService.addServiceToTheContract(contract, mService);
-        contract.setTotalAmountForServices(contractService.totalAmountForServices(contract.getListService()));
 
-        contractService.addSEmployeeToTheContract(contract, mEmployee);
+        contractService.buildingContract(contract, mService, mEmployee);
         contractService.add(contract);
 
         return contract(model);
@@ -54,12 +52,11 @@ public class ContractController {
 
 
 
-   /* @PostMapping("/delete/{id}")
-    public String deleteService(@PathVariable Long id, Model model){
-        erviceMenger.deleted(id);
-        return service(model);
-        return "";
-    }*/
+    @PostMapping("/delete/{id}")
+    public String deleteContract(@PathVariable Long id, Model model){
+        contractService.deleted(id);
+        return contract(model);
+    }
 }
 
 

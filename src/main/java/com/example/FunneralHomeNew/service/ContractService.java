@@ -45,7 +45,7 @@ public class ContractService implements DataManagementInterface<Contract> {
    }
 
 
-   public double totalAmountForServices(List<Service> services){
+   private double totalAmountForServices(List<Service> services){
       double sum = 0;
       for (Service item : services
               ) {
@@ -55,18 +55,25 @@ public class ContractService implements DataManagementInterface<Contract> {
    }
 
 
-   public void addServiceToTheContract(Contract contract, String massive){
+   private void addServiceToTheContract(Contract contract, String massive){
       for (Long item: serviceService.splitArray(massive)
            ) {
          contract.addService(serviceService.getObject(item));
       }
    }
 
-   public void addSEmployeeToTheContract(Contract contract, String massive){
+   private void addSEmployeeToTheContract(Contract contract, String massive){
       for (Long item: serviceEmployee.splitArray(massive)
       ) {
          contract.addEmploys(serviceEmployee.getObject(item));
       }
+   }
+
+   public void buildingContract(Contract contract, String arraysService,  String arraysEmployee){
+      addServiceToTheContract(contract, arraysService);
+      contract.setTotalAmountForServices(totalAmountForServices(contract.getListService()));
+
+      addSEmployeeToTheContract(contract, arraysEmployee);
    }
 }
 
