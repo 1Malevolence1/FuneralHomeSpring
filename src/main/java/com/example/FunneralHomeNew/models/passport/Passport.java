@@ -46,5 +46,18 @@ public class Passport {
    @OneToOne(mappedBy = "passport", cascade = CascadeType.ALL)
     private Employee employees;
 
+    @Override
+    public String toString() {
+        return "Passport{" +
+                "id=" + id +
+                ", surname='" + surname + '\'' +
+                ", name='" + name + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", series='" + series + '\'' +
+                ", number='" + number + '\'' +
+                ", placeOfIssue='" + placeOfIssue + '\'' +
+                ", dateOfIssue=" + dateOfIssue +
+                '}';
+    }
 
 }

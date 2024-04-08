@@ -7,6 +7,7 @@ import lombok.*;
 
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @MappedSuperclass // Аннотация @MappedSuperclass позволяет вынести общие поля в родительский класс, но при этом не создавать для него отдельную таблицу
 public abstract class Person {
@@ -23,4 +24,5 @@ public abstract class Person {
 
     @Column(name = "patronymic")
     private String patronymic;
+
 }

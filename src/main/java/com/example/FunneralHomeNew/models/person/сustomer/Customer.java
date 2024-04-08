@@ -1,7 +1,7 @@
 package com.example.FunneralHomeNew.models.person.сustomer;
 
 import com.example.FunneralHomeNew.models.contract.Contract;
-import com.example.FunneralHomeNew.models.email.Email;
+// import com.example.FunneralHomeNew.models.email.Email;
 import com.example.FunneralHomeNew.models.person.Person;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,9 +18,10 @@ public class Customer extends Person {
     @Column(name = "telephone")
     private String telephone;
 
-    @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.EAGER, mappedBy = "customer")
-    private Email email;
+ /*   @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "email_id")
+    private Email email;*/
 
-    @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
     private Contract contract;
 }
