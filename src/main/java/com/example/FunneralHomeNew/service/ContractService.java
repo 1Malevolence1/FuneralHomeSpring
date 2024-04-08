@@ -24,7 +24,6 @@ public class ContractService implements DataManagementInterface<Contract> {
 
    @Override
    public void add(Contract contract) throws ExceptionValidator {
-         contract.setTotalAmountForServices(totalAmountForServices(contract.getListService()));
          log.info("Созда конракт: {}", contract);
          contractRepository.save(contract);
    }

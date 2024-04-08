@@ -11,7 +11,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +38,7 @@ public class Contract {
     private DeadMean deadMean;
 
     @Column(name = "dateConclusionContract")
-    @Temporal(TemporalType.DATE)
-    private LocalDate dateConclusionContract;
+    private LocalDateTime dateConclusionContract;
 
     @Column(name = "totalAmountForServices")
     private Double totalAmountForServices;
@@ -59,9 +59,10 @@ public class Contract {
 
 
 
-    @PostLoad // доабвит дату после загрузки всего объекта
-    public void init(){
-        dateConclusionContract = LocalDate.now();
+    @PrePersist // доабвит дату после загрузки всего объекта
+    public void init()
+    {
+        dateConclusionContract = LocalDateTime.now();
     }
     public void addService(Service service){
        if(listService == null){

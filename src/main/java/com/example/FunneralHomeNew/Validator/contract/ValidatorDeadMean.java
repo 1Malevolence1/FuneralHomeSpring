@@ -4,7 +4,9 @@ import com.example.FunneralHomeNew.Validator.Validator;
 import com.example.FunneralHomeNew.Validator.employee.FIOValidator;
 import com.example.FunneralHomeNew.exception.ExceptionValidator;
 import com.example.FunneralHomeNew.models.person.deadmean.DeadMean;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class ValidatorDeadMean implements Validator<DeadMean> {
     @Override
     public DeadMean check(DeadMean deadMean) throws ExceptionValidator {
@@ -14,7 +16,7 @@ public class ValidatorDeadMean implements Validator<DeadMean> {
             else throw new ExceptionValidator("Ошибка в данных покойника");
         }
         catch (ExceptionValidator e) {
-            System.out.println(e.getErrorMessage());
+            log.info(e.getErrorMessage());
         }
         return null;
     }

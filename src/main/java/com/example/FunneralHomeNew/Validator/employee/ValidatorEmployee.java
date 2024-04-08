@@ -4,7 +4,9 @@ import com.example.FunneralHomeNew.Validator.Validator;
 import com.example.FunneralHomeNew.exception.ExceptionValidator;
 import com.example.FunneralHomeNew.models.passport.Passport;
 import com.example.FunneralHomeNew.models.person.employess.Employee;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class ValidatorEmployee implements Validator<Employee> {
     @Override
     public Employee check(Employee employee) throws ExceptionValidator {
@@ -16,7 +18,7 @@ public class ValidatorEmployee implements Validator<Employee> {
                 throw new ExceptionValidator("Ошибка в данных работника");
             }
         } catch (ExceptionValidator e) {
-            System.out.println(e.getErrorMessage());
+           log.info(e.getErrorMessage());
         }
         return null;
     }
@@ -37,7 +39,7 @@ public class ValidatorEmployee implements Validator<Employee> {
             else throw new ExceptionValidator("Ошибка в данных:" + errorMessage );
 
         } catch (ExceptionValidator e){
-            System.out.println(e.getErrorMessage());
+            log.info(e.getErrorMessage());
         }
         return false;
     }
