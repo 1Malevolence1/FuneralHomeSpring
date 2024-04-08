@@ -10,17 +10,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class FIOValidator {
 
 
-    public boolean checkName(String name) throws ExceptionValidator {
+    public boolean checkFIO(String name, String surname, String patronymic) throws ExceptionValidator {
+        return checkName(name) && checkSurname(surname) &&
+                checkPatronymic(patronymic);
+    }
+
+    private boolean checkName(String name) throws ExceptionValidator {
        return validate(name, "имени");
     }
 
 
-    public boolean checkSurname(String surname) throws ExceptionValidator {
+    private boolean checkSurname(String surname) throws ExceptionValidator {
         return validate(surname, "фамалии");
     }
 
 
-    public boolean checkPatronymic(String patronymic) throws ExceptionValidator {
+    private boolean checkPatronymic(String patronymic) throws ExceptionValidator {
        return validate(patronymic, " отчестве");
     }
 

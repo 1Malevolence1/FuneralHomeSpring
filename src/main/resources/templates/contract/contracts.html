@@ -88,45 +88,66 @@
 </head>
 <body>
 <h1>Похоронное бюро</h1><hr>
-<h4>Сотрудники похоронного бюро</h4>
+<h4>Конракты похоронного бюро</h4>
 
-<div th:if="${employees.isEmpty()}">
-    <p>В данный момент сотрудников нет</p>
+<div th:if="${contracts.isEmpty()}">
+    <p>В данный момент конрактов нет</p>
 </div>
-<div class="employees" th:each="employee : ${employees}">
-    <div class="employee">
+<div class="contracts" th:each="contract : ${contracts}">
+    <div class="contract">
         <div>
-            <div th:text="|${employee.passport.surname} ${employee.passport.name} ${employee.passport.patronymic}|"></div>
+            <div th:text="${contract.id}"></div>
         </div>
-        <p><a class="employee-link" th:href="@{/employee/{id}(id=${employee.id})}">Подробнее...</a></p>
+        <p><a class="contract-link" th:href="@{/contract/{id}(id=${contract.id})}">Подробнее...</a></p>
     </div>
 </div>
 <hr>
 
 
-<h3>Добавить сотрудника</h3>
 <div class="form-container">
-    <form action="/employee/create" method="post" enctype="multipart/form-data">
-        <input type="text" name="passport.surname" placeholder="Фамилия "/><br>
-        <input type="text" name="passport.name" placeholder="Имя"/><br>
-        <input type="text" name="passport.patronymic" placeholder="Отчество"/><br>
-        <input type="text" name="passport.series" placeholder="Серия паспорта"/><br>
-        <input type="text" name="passport.number" placeholder="Номер паспорта"/><br>
-        <input type="text" name="passport.placeOfIssue" placeholder="Место выдачи паспорта"/><br>
-        <input type="date" name="passport.dateOfIssue" placeholder="Дата выдачи паспорта"/><br>
-        <input type="text" name="telephone" placeholder="Телефон"/><br>
-        <input type="text" name="post" placeholder="Должность"/><br>
-        <input type="submit" value="Добавить сотрудника"/>
+    <form action="/contract/create" method="post" enctype="multipart/form-data">
+        <h3>Создать конракт</h3>
+        <!-- Поля для ввода данных покойного -->
+        <fieldset>
+            <legend>Данные покойного</legend>
+            <input type="text" name="deadMean.surname" placeholder="Фамилия "/><br>
+            <input type="text" name="deadMean.name" placeholder="Имя"/><br>
+            <input type="text" name="deadMean.patronymic" placeholder="Отчество"/><br>
+            <input type="date" name="deadMean.dateOfBirthday" placeholder="Дата рождения"/><br>
+            <input type="date" name="deadMean.dateOfDead" placeholder="Дата смерти"/><br>
+        </fieldset>
+
+        <!-- Поля для ввода данных клиента -->
+        <fieldset>
+            <legend>Данные клиента</legend>
+            <input type="text" name="customer.surname" placeholder="Фамилия"/><br>
+            <input type="text" name="customer.name" placeholder="Имя"/><br>
+            <input type="text" name="customer.patronymic" placeholder="Отчество"/><br>
+            <input type="text" name="customer.telephone" placeholder="Телефон"/><br>
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Id услгу</legend>
+            <input type="text" name="massiveService" placeholder="ID услуг"/><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Id работников</legend>
+            <input type="text" name="massiveEmployees" placeholder="ID работников"/><br>
+        </fieldset>
+
+        <input type="submit" value="Создать контракт"/>
     </form>
 </div>
 
 
 
-<div th:if="${employeeCreated}">
-    <p>Сотрудник успешно создан!</p>
+<div th:if="${contractCreated}">
+    <p>Контракт успешно создан!</p>
 </div>
-<div th:unless="${employeeCreated}">
-    <p>Не удалось создать сотрудника.</p>
+<div th:unless="${contractCreated}">
+    <p>Не удалось создать контракт.</p>
 </div>
 </body>
 

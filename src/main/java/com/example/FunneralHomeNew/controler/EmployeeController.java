@@ -1,13 +1,9 @@
 package com.example.FunneralHomeNew.controler;
-
 import com.example.FunneralHomeNew.Validator.employee.ValidatorEmployee;
 import com.example.FunneralHomeNew.config.colors.Colors;
 import com.example.FunneralHomeNew.exception.ExceptionValidator;
-import com.example.FunneralHomeNew.models.passport.Passport;
 import com.example.FunneralHomeNew.models.person.employess.Employee;
-import com.example.FunneralHomeNew.repository.PassportRepository;
 import com.example.FunneralHomeNew.service.ServiceEmployee;
-import com.example.FunneralHomeNew.service.ServicePassport;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
