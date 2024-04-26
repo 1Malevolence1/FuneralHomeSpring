@@ -1,32 +1,32 @@
-package com.example.FunneralHomeNew.service;
+package com.example.FunneralHomeNew.service.serviceImp;
 
 
-import com.example.FunneralHomeNew.models.passport.Passport;
 import com.example.FunneralHomeNew.models.service.Service;
 import com.example.FunneralHomeNew.repository.ServicesRepository;
+import com.example.FunneralHomeNew.service.SplitArray;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 
 @org.springframework.stereotype.Service
 @Slf4j
 @RequiredArgsConstructor
-public class ServiceService implements DataManagementInterface<Service>, SplitArray {
+public class ServiceService implements ServiceImp, SplitArray {
 
 
     private final ServicesRepository serviceRepository;
 
 
     @Override
-    public void add(Service service) {
-        log.info("save product {}", service);
-        serviceRepository.save(service);
 
+    public Service createService(String title, Integer price) {
+        log.info("Создание новой усулги. Названи:{}, цена: {}", title, price);
+        return serviceRepository.save(new Service(null , title, price));
     }
 
     @Override
@@ -40,8 +40,16 @@ public class ServiceService implements DataManagementInterface<Service>, SplitAr
     }
 
     @Override
-    public Service getObject(Long id) {
-        return serviceRepository.findById(id).orElse(null);
+    public Optional<Service> getService(Long id) {
+        return serviceRepository.findById(id);
+    }
+
+    @Override
+    public void updateService(Long id, String newTitile, Integer newPrice) {
+            Service service = getService(id).orElseThrow();
+            service.setTitle(newTitile);
+            service.setPrice(newPrice);
+            serviceRepository.save(service);
     }
 
     @Override
