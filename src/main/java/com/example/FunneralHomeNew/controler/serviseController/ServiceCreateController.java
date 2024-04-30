@@ -1,11 +1,10 @@
 package com.example.FunneralHomeNew.controler.serviseController;
 
 
-import com.example.FunneralHomeNew.dto.NewServicePayload;
+import com.example.FunneralHomeNew.record.service.NewServicePayload;
 import com.example.FunneralHomeNew.models.service.Service;
 import com.example.FunneralHomeNew.service.serviceImp.ServiceService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

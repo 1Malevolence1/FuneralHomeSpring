@@ -1,4 +1,4 @@
-package com.example.FunneralHomeNew.dto;
+package com.example.FunneralHomeNew.record.service;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -1,7 +1,7 @@
 package com.example.FunneralHomeNew.controler.serviseController;
 
 
-import com.example.FunneralHomeNew.dto.UpdateServicePayload;
+import com.example.FunneralHomeNew.record.service.UpdateServicePayload;
 import com.example.FunneralHomeNew.models.service.Service;
 import com.example.FunneralHomeNew.service.serviceImp.ServiceService;
 import jakarta.servlet.http.HttpServletResponse;
