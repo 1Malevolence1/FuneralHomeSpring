@@ -4,6 +4,7 @@ import com.example.FunneralHomeNew.exception.ExceptionValidator;
 import com.example.FunneralHomeNew.models.contract.Contract;
 import com.example.FunneralHomeNew.models.service.Service;
 import com.example.FunneralHomeNew.repository.ContractRepository;
+import com.example.FunneralHomeNew.service.serviceImp.ServiceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -57,7 +58,7 @@ public class ContractService implements DataManagementInterface<Contract> {
    private void addServiceToTheContract(Contract contract, String massive){
       for (Long item: serviceService.splitArray(massive)
            ) {
-         contract.addService(serviceService.getObject(item));
+         contract.addService(serviceService.getService(item).orElse(null));
       }
    }
 

@@ -93,20 +93,17 @@
         <p class="service-id">ID: <span th:text="${service.id}"></span></p>
         <p class="service-title" th:text="${service.title}"></p>
         <p class="service-price"><span th:text="${service.price}"></span> руб.</p>
-        <p><a class="service-link" th:href="@{/service/{id}(id=${service.id})}">Подробнее...</a></p>
+        <p><a class="service-link" th:href="@{/service_info/{id}(id=${service.id})}">Подробнее...</a></p>
     </div>
 </div>
 <hr>
-<h3>Добавить новую услугу</h3>
-<div class="form-container">
-    <form action="/service/create" method="post" enctype="multipart/form-data">
-        <input type="text" name="title" placeholder="Название услуги"/><br>
-        <input type="number" name="price" placeholder="Цена"/><br>
-        <input type="submit" value="Добавить услугу"/>
-    </form>
-</div>
 
-<a href="/">
+
+<a data-th-href="@{create}">
+    <button style="background-color: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 5px;">Создать услугу</button>
+</a>
+
+<a data-th-href="@{/main}">
     <button style="background-color: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 5px;">Назад</button>
 </a>
 </body>
